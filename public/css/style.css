@@ -311,6 +311,10 @@ body {
 }
 
 
+.notLiked {
+  color: black;
+}
+
 .liked {
   color: red;
 }

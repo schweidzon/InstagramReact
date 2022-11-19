@@ -6,10 +6,6 @@ export default function Posts() {
         { usuarioImage: "assets/img/barked.svg", usuarioName: "barked", postImage: "assets/img/dog.svg", likesImage: "assets/img/adorable_animals.svg", likedUser: "adorable_animals", likeNumber: 99.159 }
     ]
 
-
-
-
-
     return (
         <div className="posts">
             {posts.map((p) => <Post key={p.usuarioName} post={p} />)}
@@ -20,42 +16,38 @@ export default function Posts() {
 
 function Post(props) {
 
-    const [like, setLike] = useState("")
+    const [like, setLike] = useState("heart-outline")
     const [likesNumer, setLikesNumber] = useState(props.post.likeNumber)
-    console.log(props.post.likeNumber)
+    const [iconColor, setIconColor] = useState("notLiked")
+    const [saveIcon, setSaveIcon] = useState("bookmark-outline")
 
     function liked() {
-        if (props.post.likeNumber === 101.523) {
-            setLike('liked')
-            setLikesNumber(101.524)
-            if (like === 'liked') {
-                setLike("")
-                setLikesNumber(101.523)
-
-
-            } else {
-                setLike('liked')
-                setLikesNumber(101.524)
-
-            }
+        if(like === "heart-outline") {
+            setLike('heart')
+            setIconColor('liked')
+            setLikesNumber(Number((props.post.likeNumber)+ 0.001).toFixed(3))
+        } else {
+            setLike('heart-outline')
+            setIconColor('notLiked')
+            setLikesNumber(props.post.likeNumber)
 
         }
-        if (props.post.likeNumber === 99.159) {
-            setLike('liked')
-            Number(setLikesNumber("99.160"))
-            if (like === 'liked') {
-                setLike("")
-                setLikesNumber("99.159")
+    }
+
+    function likeImage() {
+        setLike('heart')
+         setIconColor('liked')
+         setLikesNumber(Number((props.post.likeNumber)+ 0.001).toFixed(3))
+
+    }
 
 
-            } else {
-                setLike('liked')
-                setLikesNumber("99.160")
-
-            }
-
+    function savePost() {
+        if(saveIcon === "bookmark-outline") {
+            setSaveIcon("bookmark")
+        } else {
+            setSaveIcon("bookmark-outline")
         }
-
     }
     return (
         <div className="post" data-test="post">
@@ -70,18 +62,18 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img src={props.post.postImage} alt="ContentImage" data-test="post-image" />
+                <img src={props.post.postImage} onClick={likeImage} alt="ContentImage" data-test="post-image" />
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon className={like} onClick={liked} name="heart-outline" data-test="like-post"></ion-icon>
+                        <ion-icon class={iconColor} onClick={liked} name={like} data-test="like-post"></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline" data-test="save-post"></ion-icon>
+                        <ion-icon name={saveIcon} onClick={savePost} data-test="save-post"></ion-icon>
                     </div>
                 </div>
 
