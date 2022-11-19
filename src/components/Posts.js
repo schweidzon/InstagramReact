@@ -22,10 +22,10 @@ function Post(props) {
     const [saveIcon, setSaveIcon] = useState("bookmark-outline")
 
     function liked() {
-        if(like === "heart-outline") {
+        if (like === "heart-outline") {
             setLike('heart')
             setIconColor('liked')
-            setLikesNumber(Number((props.post.likeNumber)+ 0.001).toFixed(3))
+            setLikesNumber(Number((props.post.likeNumber) + 0.001).toFixed(3))
         } else {
             setLike('heart-outline')
             setIconColor('notLiked')
@@ -36,19 +36,31 @@ function Post(props) {
 
     function likeImage() {
         setLike('heart')
-         setIconColor('liked')
-         setLikesNumber(Number((props.post.likeNumber)+ 0.001).toFixed(3))
+        setIconColor('liked')
+        setLikesNumber(Number((props.post.likeNumber) + 0.001).toFixed(3))
 
     }
 
 
     function savePost() {
-        if(saveIcon === "bookmark-outline") {
+        if (saveIcon === "bookmark-outline") {
             setSaveIcon("bookmark")
         } else {
             setSaveIcon("bookmark-outline")
         }
     }
+
+    function likeAni() {
+        setLikeAnimation("animation like")
+        setLike('heart')
+        setIconColor('liked')
+        setLikesNumber(Number((props.post.likeNumber) + 0.001).toFixed(3))
+        setTimeout(() => {
+            setLikeAnimation("animation")
+        }, 401)
+    }
+
+    const [likeAnimation, setLikeAnimation] = useState("animation")
     return (
         <div className="post" data-test="post">
             <div className="topo">
@@ -62,7 +74,8 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img src={props.post.postImage} onClick={likeImage} alt="ContentImage" data-test="post-image" />
+                <ion-icon class={likeAnimation} name="heart"></ion-icon>
+                <img src={props.post.postImage}  onDoubleClick={likeAni} alt="ContentImage" data-test="post-image" />
             </div>
 
             <div className="fundo">

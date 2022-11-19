@@ -319,6 +319,25 @@ body {
   color: red;
 }
 
+.conteudo {
+  position: relative;
+}
+
+.animation {
+  position: absolute;
+  color: white;
+  left: 50%;
+  top: 50%;
+  transition: all ease 0.4s;
+  opacity: 0;
+}
+.animation.like {
+  opacity: 1;
+  font-size: 200px;
+  left: 35%!important;
+  top: 35%!important;
+}
+
 @media (max-width: 935px) {
   .sidebar {
     display: none;
