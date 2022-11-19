@@ -9,28 +9,28 @@ export default function Sugestoes() {
 
 
     return (
-        <div class="sugestoes">
-            <div class="titulo">
+        <div className="sugestoes">
+            <div className="titulo">
                 Sugestões para você
                 <div>Ver tudo</div>
             </div>
-            {suggestions.map((s) => <Suggestion suggestion={s}/>)}
+            {suggestions.map((s) => <Suggestion key={s.suggestionImage} suggestion={s}/>)}
         </div>
     )
 }
 
 function Suggestion(props) {
     return (
-        <div class="sugestao">
-            <div class="usuario">
+        <div className="sugestao">
+            <div className="usuario">
                 <img src={props.suggestion.suggestionImage} alt="UsuarioImage" />
-                <div class="texto">
-                    <div class="nome">{props.suggestion.suggestionName}</div>
-                    <div class="razao">{props.suggestion.suggestionReason}</div>
+                <div className="texto">
+                    <div className="nome">{props.suggestion.suggestionName}</div>
+                    <div className="razao">{props.suggestion.suggestionReason}</div>
                 </div>
             </div>
 
-            <div class="seguir">Seguir</div>
+            <div className="seguir">Seguir</div>
         </div>
 
     )

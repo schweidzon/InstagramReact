@@ -3,15 +3,13 @@ import Corpo from "./Corpo"
 
 export default function App() {
     return (
-        <div class="content">
-            <div class="navbar">
+        <div className="content">
+            <div className="navbar">
                 <NavBar/>
             </div>
             <Corpo/>
 
-
-
-            <div class="fundo-mobile">
+            <div className="fundo-mobile">
                 <ion-icon name="home"></ion-icon>
                 <ion-icon name="search-outline"></ion-icon>
                 <ion-icon name="add-circle-outline"></ion-icon>
