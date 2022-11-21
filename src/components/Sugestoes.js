@@ -14,12 +14,12 @@ export default function Sugestoes() {
                 Sugestões para você
                 <div>Ver tudo</div>
             </div>
-            {suggestions.map((s) => <Suggestion key={s.suggestionImage} suggestion={s}/>)}
+            {suggestions.map((s) => <Sugestao key={s.suggestionImage} suggestion={s}/>)}
         </div>
     )
 }
 
-function Suggestion(props) {
+function Sugestao(props) {
     return (
         <div className="sugestao">
             <div className="usuario">

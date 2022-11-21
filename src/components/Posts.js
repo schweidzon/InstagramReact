@@ -34,14 +34,6 @@ function Post(props) {
         }
     }
 
-    function likeImage() {
-        setLike('heart')
-        setIconColor('liked')
-        setLikesNumber(Number((props.post.likeNumber) + 0.001).toFixed(3))
-
-    }
-
-
     function savePost() {
         if (saveIcon === "bookmark-outline") {
             setSaveIcon("bookmark")
